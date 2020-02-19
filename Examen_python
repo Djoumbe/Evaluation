@@ -1,0 +1,25 @@
+from re import sub
+
+Elus ='																				'													
+Elus += 'code (insee)	mode de scrutin	num liste	code (nuance de la liste)	numéro du candidat dans la liste	tour	nom	prénom	sexe	Date de naissance	code (profession)	libellé profession	nationalité'
+
+def r_names(Elus):
+    x=Elus.replace(' ','_')
+    x1=sub('[é,è]','e',x)
+    x2=sub('[(,)]','',x1)
+    x3=x2.split()
+    return x3
+print(r_names(Elus))
+
+x3=r_names(Elus)
+
+def parse_dates(x3):
+    for i in range (0, len(x3)):
+        if x3[i][0:4]=='Date':
+            return x3[i]
+
+print(parse_dates(x3))
+
+
+
+
