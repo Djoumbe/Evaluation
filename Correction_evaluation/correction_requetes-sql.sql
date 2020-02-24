@@ -70,14 +70,14 @@ order by nb_delus desc limit 10;
 SELECT - 2013 YEAR(Date_de_naissance) as age 
 from elus 
 inner join villes on elus.code_insee = villes.code_insee
-inner join deparetments on villes.departement_code = departement
+inner join deparetments on villes.departement_code = departement;
 
 
 # 17. Afficher les départements où l’âge moyen des élus est strictement inférieur à 54 ans.
-SELECT AVG ABS(TIMESTAMPDIFF (year, '2014-01-01' Date_de_naissance))) as age_moyen, departement.name as departement
-from elus 
-INNER JOIN villes on elus.code_insee = ville.code_insee
-INNER JOIN departement on ville.departement_code = departement.code
-group by name
-having age_moyen > 54
-order by age_moyen DESC;
+SELECT AVG(2019 - YEAR(DATE_DE_NAISSANCE)) AS AGE, DEPARTEMENT_CODE
+FROM ELUS
+INNER JOIN VILLES ON ELUS.CODE_INSEE = VILLES.CODE_INSEE
+GROUP BY DEPARTEMENT_CODE
+HAVING AVG(AGE) < 54 
+ORDER BY AGE
+;
